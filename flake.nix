@@ -1,7 +1,10 @@
 {
   description = "A basic devShell using flake-utils each";
 
-  inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+#    nixpkgs.url = "https://nixos.org/channels/nixpkgs-unstable";
+  };
 
   outputs = { self, nixpkgs,  flake-utils }:
   flake-utils.lib.eachDefaultSystem (system:
@@ -11,9 +14,14 @@
         buildInputs = with pkgs; [ 
           zsh
           ripgrep
-          go
+          python3Full
+          go_1_19
           golangci-lint
           gopls
+          gnumake
+          python310Packages.pip
+          python310Packages.poetry
+          diffutils
         ];
 
         BUF_BUILD_VER="1.1.0";
@@ -25,11 +33,7 @@
         PROTOC_GEN_DOC_VER="1.5.1";
 
         shellHook = ''
-          if [ -z $XDG_DATA_HOME ]; then
-            export XDG_DATA_HOME=$HOME/.local/share
-          fi
-
-          export GOPATH=$XDG_DATA_HOME/dev-shell/go
+          export GOPATH=$PWD/.data/go
           export PATH=$GOPATH/bin:$PATH
 
           tools="github.com/bufbuild/buf/cmd/buf@v$BUF_BUILD_VER
