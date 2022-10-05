@@ -2,8 +2,8 @@
   description = "A basic devShell using flake-utils each";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";  # use the unstable packages for more up-to-date packages
     flake-utils.url = "github:numtide/flake-utils";
-#    nixpkgs.url = "https://nixos.org/channels/nixpkgs-unstable";
   };
 
   outputs = { self, nixpkgs,  flake-utils }:
