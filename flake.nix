@@ -16,7 +16,6 @@
           ripgrep
           python3Full
           go
-          golangci-lint
           gopls
           gnumake
           python310Packages.pip
@@ -31,6 +30,7 @@
         PROTOC_GEN_GRPC_GATEWAY_VER="2.7.3";
         PROTOC_GEN_OPENAPIV2_VER="2.7.3";
         PROTOC_GEN_DOC_VER="1.5.1";
+        GOLANGCI_LINT_VER="1.49.0";
 
         shellHook = ''
           export GOPATH=$PWD/.data/go
@@ -42,7 +42,8 @@
           github.com/chrusty/protoc-gen-jsonschema/cmd/protoc-gen-jsonschema@$PROTOC_GEN_JSONSCHEMA_VER
           github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VER
           github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@v$PROTOC_GEN_OPENAPIV2_VER
-          github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@v$PROTOC_GEN_DOC_VER"
+          github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@v$PROTOC_GEN_DOC_VER
+          github.com/golangci/golangci-lint/cmd/golangci-lint@v$GOLANGCI_LINT_VER"
 
           # Note: Make sure the above tools and versions match the ones in devops-infra/docker/cipipeline/Dockerfile
           echo "$tools" | while read -r toolurl ; do
