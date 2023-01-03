@@ -20,7 +20,7 @@
           gopls
           gnumake
           python310Packages.pip
-          python310Packages.poetry
+          poetry
           diffutils
         ];
 
