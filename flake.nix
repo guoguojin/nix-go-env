@@ -10,12 +10,12 @@
   flake-utils.lib.eachDefaultSystem (system:
     let pkgs = nixpkgs.legacyPackages.${system}; in
     rec {
-      devShell = pkgs.mkShell {
+      devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [ 
           zsh
           ripgrep
           python3Full
-          go_1_19
+          go
           golangci-lint
           gopls
           gnumake
